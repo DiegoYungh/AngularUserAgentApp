@@ -12,6 +12,10 @@ class KoalasHutGeoIP2Bundle extends Bundle
 	public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        new GeoIP2();
+        try {
+        	new GeoIP2();
+        } catch (\Exception $e) {
+        	// No file yet
+        }
     }
 }

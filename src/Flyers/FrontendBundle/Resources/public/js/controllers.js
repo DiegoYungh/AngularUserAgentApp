@@ -24,9 +24,7 @@ controller('AgentListController', [
         $scope.agentsTable = new ngTableParams({
             page: 1,
             count: 10,
-            ordering: {
-                'created_at': 'desc'
-            }
+            sorting: {'created_at': 'desc'}
         }, {
             total: data.length,
             getData: function($defer, params){
