@@ -1,0 +1,99 @@
+<div class="modal fade" id="promptForAgent" tabindex="-1" role="dialog" aria-labelledby="promptForAgentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="promptForAgentLabel">Can I use you User-Agent string to our research?</h4>
+            </div>
+            <div class="modal-body">
+                <p>I will be borrowing the following info from you:</p>
+                <ul>
+                    <li>
+                        <strong>IP Address</strong>: {{ipAddress}}
+                    </li>
+                    <li>
+                        <strong>Screen dimension</strong> : {{screen.width}} x {{screen.height}}
+                    </li>
+                    <li>
+                        <strong>User Agent</strong> : {{userAgent}}
+                    </li>
+                    <li>
+                        <strong>Using Mobile</strong> : {{isMobile}}
+                    </li>
+                    <li>
+                        <strong>Device Name</strong> : {{Devicename}}
+                    </li>
+                    <li>
+                        <strong>Device Type</strong> : {{formFactor}}
+                    </li>
+                    <li>
+                        <strong>Country</strong> : {{country}}
+                    </li>
+                    <li>
+                        <strong>Latitude</strong> : {{coords.lat}}
+                    </li>
+                    <li>
+                        <strong>Longitude</strong> : {{coords.long}}
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="addAgent()">Yes</button>
+                <button type="button" class="btn btn-error" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-error" data-dismiss="modal" ng-click="stopBotherClick()">Stop bothering me</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p>
+    Clear: <button ng-click="agentsTable.filter({})" class="btn btn-default btn-xs">Filter</button>
+    <button ng-click="agentsTable.sorting({})" class="btn btn-default btn-xs">Sorting</button>
+</p>
+
+<table ng-table="agentsTable" show-filter="true" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" width="100%">
+    <tr 
+        ng-repeat="item in $data" 
+        ng-click="onAgentClick(item)">
+        <td data-title="'Browser'" sortable="'browser_name'" filter="{ 'browser_name': 'text' }">
+            {{item.browser_name}}
+        </td>
+        <td data-title="'Browser Ver.'" header-class="hidden-xs" filter-class="hidden-xs" sortable="'browser_version'" filter="{ 'browser_version': 'text' }" class="hidden-xs">
+            {{item.browser_version}}
+        </td>
+
+        <td data-title="'Engine'" sortable="'engine_name'" filter="{ 'engine_name': 'text' }" class="hidden-xs">
+            {{item.engine_name}}
+        </td>
+        <td data-title="'Engine Ver.'" header-class="hidden-xs" filter-class="hidden-xs" sortable="'engine_version'" filter="{ 'engine_version': 'text' }" class="hidden-xs">
+            {{item.engine_version}}
+        </td>
+
+        <td data-title="'OS'" sortable="'os_name'" filter="{ 'os_name': 'text' }">
+            {{item.os_name}}
+        </td>
+        <td data-title="'OS Ver.'" header-class="hidden-xs" filter-class="hidden-xs" sortable="'os_version'" filter="{ 'os_version': 'text' }">
+            {{item.os_version}}
+        </td>
+
+        <td data-title="'Device'" header-class="hidden-xs" filter-class="hidden-xs" sortable="'device_name'" filter="{ 'device_name': 'text' }" class="hidden-xs">
+            {{item.device_name}}
+        </td>
+        <td data-title="'Device Ver.'" header-class="hidden-xs" filter-class="hidden-xs" sortable="'device_version'" filter="{ 'device_version': 'text' }" class="hidden-xs">
+            {{item.device_version}}
+        </td>
+    </tr>
+    <tfoot>
+        <tr>
+            <th>Browser</th>
+            <th class="hidden-xs">Browser Version</th>
+            <th>Engine</th>
+            <th class="hidden-xs">Engine Version</th>
+            <th>Os</th>
+            <th class="hidden-xs">OS Version</th>
+            <th class="hidden-xs">Device</th>
+            <th class="hidden-xs">Device Version</th>
+        </tr>
+    </tfoot>
+</table>

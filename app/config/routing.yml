@@ -1,0 +1,19 @@
+koalas_hut_geo_ip2:
+    resource: "@KoalasHutGeoIP2Bundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+store:
+    resource: "@StoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+frontend:
+    resource: "@FrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+backend:
+    resource: "@BackendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

@@ -1,0 +1,7 @@
+parameters:
+    koalas_hut_geo_ip2.class: KoalasHut\Bundle\GeoIP2Bundle\GeoIP2
+
+services:
+    geoip2:
+        class: %koalas_hut_geo_ip2.class%
+        arguments: ['getDatabaseReader']

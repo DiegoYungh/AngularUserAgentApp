@@ -1,0 +1,131 @@
+<style>
+    body {background: #EAEAEA;}
+    .user-details { padding: 0;}
+    .user-details .user-image {position: relative;  z-index: 1; width: 100%; text-align: center;}
+    .user-image .browser { clear: both; margin: auto; position: relative;}
+
+    .user-details .user-info-block {width: 100%; position: absolute; top: 55px; background: rgb(255, 255, 255); z-index: 0; padding-top: 35px;}
+    .user-info-block .user-heading {width: 100%; text-align: center; margin: 10px 0 0;}
+    .user-info-block .navigation {float: left; width: 100%; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #428BCA; border-top: 1px solid #428BCA;}
+    .navigation li {float: left; margin: 0; padding: 0;}
+    .navigation li a {padding: 15px 25px; float: left;}
+    .navigation li.active a {background: #428BCA; color: #fff;}
+    .user-info-block .user-body {float: left; padding: 5%; width: 100%;}
+    .user-body .tab-content > div {float: left; width: 100%;}
+    .user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 user-details">
+            <div class="user-image">
+                
+                <div src="" alt="{{agent.browser_name}}" title="Karan Singh Sisodia" class="img-square browser {{agent.browser_name}}"></div>
+                
+            </div>
+            <div class="user-info-block">
+                <div class="user-heading">
+                    <h3>{{agent.browser_name}} {{agent.browser_version}}</h3>
+                    <span class="help-block">{{agent.engine_name}} {{agent.engine_version}}</span>
+                </div>
+                <ul class="navigation">
+                    <li class="active">
+                        <a data-toggle="tab" href="#information">
+                            <span class="glyphicon glyphicon-tasks"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#screen">
+                            <span class="glyphicon glyphicon-fullscreen"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#location">
+                            <span class="glyphicon glyphicon-map-marker"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#plugins">
+                            <span class="glyphicon glyphicon-list"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="user-body">
+                    <div class="tab-content">
+                        <div id="information" class="tab-pane active">
+                            <h4>User Agent</h4>
+                            <small>{{agent.user_agent_string}}</small>
+
+                            <table class="table" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td>Browser: {{agent.browser_name}} {{agent.browser_version}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Engine: {{agent.engine_name}} / {{agent.engine_version}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OS: {{agent.os_name}} {{agent.os_version}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Device: {{agent.device_name}} / {{agent.device_version}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IP: {{agent.ip_address}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="screen" class="tab-pane">
+                            <h4>Screen</h4>
+                            <h1>{{agent.screen_width}} x {{agent.screen_height}}</h1>
+                            <hr>
+                        </div>
+                        <div id="location" class="tab-pane">
+                            <h4>Location</h4>
+
+                            <table class="table" width="100%">
+                                <tr>
+                                    <td>Lat.: {{agent.latitude}}</td>
+                                    <td>Long.: {{agent.longitude}}</td>
+                                    <td>Country.: {{agent.country}}</td>
+                                </tr>
+                            </table>
+
+                            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{agent.latitude}},{{agent.longitude}}&zoom=1&size=640x640&sensor=false&markers=color:red%7Clabel:!%7C{{agent.latitude}},{{agent.longitude}}&maptype=terrain" alt="agent location" class="img-responsive">
+                        </div>
+                        <div id="plugins" class="tab-pane">
+                            <h4>Plugins</h4>
+
+                            <table class="table">
+                                <tr>
+                                    <td>Flash: {{agent.plugin_flash}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Java: {{agent.plugin_java}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Shockwave: {{agent.plugin_shockwave}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Media Player: {{agent.plugin_windows_media_player}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Real Player: {{agent.plugin_real_player}}</td>
+                                </tr>
+                                <tr>
+                                    <td>QuickTime: {{agent.plugin_quicktime}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Acrobat Reader: {{agent.plugin_acrobat_reader}}</td>
+                                </tr>
+                                <tr>
+                                    <td>SVG Viewer: {{agent.plugin_svg}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
